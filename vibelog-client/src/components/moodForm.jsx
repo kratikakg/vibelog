@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 
 const MoodForm = () => {
   const [mood, setMood] = useState('happy');
@@ -13,15 +14,15 @@ const MoodForm = () => {
     });
     const data = await res.json();
     if (res.ok) {
-      alert('Mood logged successfully!');
+      toast.success('Mood logged successfully!');
       setEntry('');
     } else {
-      alert(data.error || 'Something went wrong');
+      toast.error(data.error || 'Something went wrong');
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white shadow-md p-6 rounded max-w-xl mx-auto">
+    <form onSubmit={handleSubmit} className="bg-white shadow-md p-6 rounded max-w-xl mx-auto animate-slide-in">
       <label className="block mb-4">
         <span className="text-lg font-medium">Mood</span>
         <select value={mood} onChange={(e) => setMood(e.target.value)} className="mt-1 block w-full border rounded p-2">
@@ -38,9 +39,11 @@ const MoodForm = () => {
         <textarea value={entry} onChange={(e) => setEntry(e.target.value)} className="mt-1 block w-full border rounded p-2" rows={4} placeholder="Jot it down..." />
       </label>
 
-      <button type="submit" className="bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-600">Save Mood</button>
+      <button type="submit" className="bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-600 transition">Save Mood</button>
     </form>
   );
 };
 
 export default MoodForm;
+// This component allows users to log their mood and thoughts
+// It sends the data to the server and displays success or error messages using react-hot-toast

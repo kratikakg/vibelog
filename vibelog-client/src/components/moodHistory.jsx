@@ -7,13 +7,14 @@ const MoodHistory = () => {
     const fetchLogs = async () => {
       const res = await fetch('http://localhost:5000/api/mood');
       const data = await res.json();
-      setLogs(data);
+      const sorted = data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      setLogs(sorted);
     };
     fetchLogs();
   }, []);
 
   return (
-    <div className="space-y-4 max-w-2xl mx-auto">
+    <div className="space-y-4 max-w-2xl mx-auto animate-slide-in">
       {logs.map((log) => (
         <div key={log._id} className="bg-white p-4 shadow rounded">
           <div className="flex justify-between items-center">
@@ -33,3 +34,5 @@ const MoodHistory = () => {
 };
 
 export default MoodHistory;
+// This component fetches and displays the mood logs from the server
+// It sorts them by creation date and displays each log with its mood, entry, and media suggestions

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import MoodForm from './components/MoodForm';
 import MoodHistory from './components/MoodHistory';
 import { Toaster } from 'react-hot-toast';

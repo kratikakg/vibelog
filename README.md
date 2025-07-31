@@ -6,7 +6,7 @@ VibeLog is a cozy, minimalist mood journaling app where you can log your daily v
 ## Built with:  
  
 ⚡ React + Tailwind CSS (Frontend)
-
+  
 ⚡ Express.js + Node.js (Backend)
 
 ⚡ MongoDB (Database)
